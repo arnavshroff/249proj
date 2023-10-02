@@ -3,7 +3,6 @@
 #include<Adafruit_MQTT_Client.h>
 #include<DHT.h>
 
-//  rgb led details
 byte rpin = 25;
 byte gpin = 26;
 byte bpin = 27;
@@ -14,16 +13,13 @@ byte resolution = 8;
 int frequency = 5000;
 byte rval , gval , bval = 0;
 
-//  dht details
 byte dht_pin = 4;
 #define dht_type DHT11
 DHT dht(dht_pin , dht_type);
 
-//  wifi credentials
 const char ssid[] = "Harsh";
 const char password[] = "@vijay123";
 
-//  io details
 #define IO_USERNAME  "Arnav_shroff"
 #define IO_KEY       "aio_tDbv99COYAIRafnhjkx9FZdI0"
 #define IO_BROKER    "io.adafruit.com"
@@ -44,7 +40,6 @@ void setup()
 {
   Serial.begin(115200);
 
-  //  connecting with wifi
   Serial.print("Connecting with : ");
   Serial.println(ssid);
   WiFi.begin(ssid , password);
@@ -76,7 +71,6 @@ void loop()
 {
   mqttconnect();
 
-  //  reading values from dht sensor
   float tempc = dht.readTemperature();
   float tempf = dht.readTemperature(true);
   float tempk = tempc + 273.15;
